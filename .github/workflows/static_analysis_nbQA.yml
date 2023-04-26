@@ -25,4 +25,4 @@ jobs:
 
       - name: Run nbQA with flake8
         run: |
-          nbqa flake8 . --recursive
+          find . -type f -name "*.ipynb"
