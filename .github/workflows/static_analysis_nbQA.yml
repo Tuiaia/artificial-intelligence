@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '**.ipynb'
+  workflow_dispatch:
 
 jobs:
   nbqa_analysis:
@@ -24,4 +25,4 @@ jobs:
 
       - name: Run nbQA with flake8
         run: |
-          nbqa flake8 . --recursive --exclude some_folder_to_exclude
+          nbqa flake8 . --recursive
