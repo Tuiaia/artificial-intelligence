@@ -1,0 +1,28 @@
+name: Jupyter Notebook Static Analysis with nbQA
+
+on:
+  push:
+    paths:
+      - '**.ipynb'
+  workflow_dispatch:
+
+jobs:
+  nbqa_analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install nbQA flake8
+
+      - name: Run nbQA with flake8
+        run: |
+          find . -type f -name "*.ipynb" -exec nbqa flake8 {} \;
