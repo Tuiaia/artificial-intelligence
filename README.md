@@ -1,9 +1,6 @@
 # Inteligência Artificial
 
 ## Sumário
-
-- [Inteligência Artificial](#inteligência-artificial)
-  - [Sumário](#sumário)
   - [Descrição](#descrição)
   - [Organização do Repositório](#organização-do-repositório)
   - [Fluxo de trabalho](#fluxo-de-trabalho)
