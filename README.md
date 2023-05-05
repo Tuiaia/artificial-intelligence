@@ -1,17 +1,18 @@
 # Inteligência Artificial
 
 ## Sumário
-  - [Descrição](#descrição)
-  - [Organização do Repositório](#organização-do-repositório)
-  - [Fluxo de trabalho](#fluxo-de-trabalho)
-  - [Como reproduzir o fluxo de trabalho](#como-reproduzir-o-fluxo-de-trabalho)
-  - [Contrução da base de dados](#contrução-da-base-de-dados)
-  - [Tecnologias e ferramentas utilizadas](#tecnologias-e-ferramentas-utilizadas)
-  - [Autor](#autor)
+
+- [Descrição](#descrição)
+- [Organização do Repositório](#organização-do-repositório)
+- [Fluxo de trabalho](#fluxo-de-trabalho)
+- [Como reproduzir o fluxo de trabalho](#como-reproduzir-o-fluxo-de-trabalho)
+- [Contrução da base de dados](#contrução-da-base-de-dados)
+- [Tecnologias e ferramentas utilizadas](#tecnologias-e-ferramentas-utilizadas)
+- [Autor](#autor)
 
 ## Descrição
 
-Este repositório tem como objetivo armazenar e controlar as versões de artefatos relacionados à análise de bases de textos noticiários e códigos de Machine Learning. Este contém o treinamento de um modelo de classificação de sentimentos de notícias em português e inglês, utilizando técnicas de Processamento de Linguagem Natural (NLP) e Deep Learning. O objetivo é identificar se uma notícia é positiva, negativa ou neutra com base no seu conteúdo.
+Este repositório tem como objetivo armazenar e controlar as versões de artefatos relacionados à análise de bases de textos noticiários e códigos de Machine Learning.
 
 ## Organização do Repositório
 
@@ -44,8 +45,9 @@ As notícias utilizadas no treinamento foram coletadas de diversas fontes em por
   - Google News (mais de 500 fontes distintas)
   - InfoMoney
   - Financial PhraseBank
+
   Os dados foram coletados por meio de "web scraping" utilizando a biblioteca Twint, Requests e BeautifulSoup em Python. Foram coletados apenas os textos das notícias, sem incluir imagens ou vídeos.
-- Análise exploratória: A análise exploratória dos dados foi realizada a fim de entender a natureza dos dados e identificar padrões e tendências relevantes. Esta etapa incluiu a visualização dos dados, a identificação de valores ausentes, a análise da distribuição das variáveis, a frequência das palavras e a identificação de correlações.
+- Análise exploratória: A análise exploratória dos dados foi realizada a fim de entender a natureza dos dados e identificar padrões e tendências relevantes. Esta etapa incluiu a visualização dos dados, a identificação de valores ausentes, a análise da distribuição das variáveis, a frequência das palavras e a identificação de correlações. Algumas das análises feitas estão representadas por gráficos no [README](https://github.com/Tuiaia/artificial-intelligence/tree/main/datasets/README.md) do diretório dos datasets.
 - Pré-processamento: O pré-processamento dos dados incluiu o tratamento de dados ausentes e a remoção de URLs e "palavras vazias", também chamadas de stopwords, estas são palavras comuns que geralmente não carregam informações significativas em análises de texto e são frequentemente removidas durante o pré-processamento de dados para reduzir o ruído e acelerar o processamento.
 - Divisão dos dados: A divisão dos dados em treino, validação e teste foi feita utilizando o método holdout, com 70% dos dados para treino, 15% para validação e 15% para teste. Essa divisão foi realizada de forma estratificada em relação aos rótulos, idiomas e fontes das notícias para garantir que as proporções das classes (ou grupos) sejam mantidas nos subconjuntos de treinamento, validação e teste.
 - Treinamento do Modelo: O treinamento foi feito a partir do ajuste fino do modelo [bert-base-multilingual-cased](https://huggingface.co/bert-base-multilingual-cased) com a base de dados desenvolvida. Os parâmetros e as métricas de execução utilizados nos treinamentos estão disponíveis no [projeto](https://wandb.ai/tiagosanti/Tuiaia?workspace=user-tiagosanti) da plataforma Weights & Biases.
@@ -54,7 +56,7 @@ As notícias utilizadas no treinamento foram coletadas de diversas fontes em por
   - Recall
   - F1-score
   - Acurácia
-- Análise de importância de variáveis e interpretabilidade: Foram realizadas análises de importância de variáveis e interpretabilidade para entender quais variáveis têm maior influência na classificação dos sentimentos.
+- Análise de importância de variáveis e interpretabilidade: Foram realizadas análises de importância de variáveis e interpretabilidade para entender quais variáveis têm maior influência na classificação dos sentimentos. O procedimento para realizar essa análise está contido no Jupyter Notebook [insight-extraction.ipynb](https://github.com/Tuiaia/artificial-intelligence/blob/main/jupyter-notebooks/insight-extraction.ipynb).
 
 ## Como reproduzir o fluxo de trabalho
 
