@@ -36,13 +36,13 @@ jobs:
         id: check_report
         run: |
           if [[ -s nbqa-report.txt ]]; then
-            echo "::set-output name=has_report::true"
+            echo "has_report=true" >> $GITHUB_ENV
           else
-            echo "::set-output name=has_report::false"
+            echo "has_report=false" >> $GITHUB_ENV
           fi
 
       - name: Add comment to pull request with nbQA report
-        if: steps.check_report.outputs.has_report == 'true' && github.event_name == 'pull_request'
+        if: env.has_report == 'true' && github.event_name == 'pull_request'
         uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -58,7 +58,7 @@ jobs:
             });
 
       - name: Create issue for improvements if there is a nbQA report
-        if: steps.check_report.outputs.has_report == 'true' && github.event_name == 'push'
+        if: env.has_report == 'true' && github.event_name == 'push'
         uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
