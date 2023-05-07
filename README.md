@@ -20,6 +20,7 @@ O repositório está organizado em:
 
 - datasets: Este diretório contém as bases de dados utilizadas no projeto. Seu objetivo é disponibilizar os dados de maneira organizada e padronizada para que possam ser utilizados em diferentes etapas do projeto, como análise exploratória, pré-processamento e treinamento de modelos. O diretório conta com análises a respeito das notícias coletadas, essas estão descritas em seu respectivo [README](https://github.com/Tuiaia/artificial-intelligence/blob/main/datasets/README.md).
 - jupyter-notebooks: Este diretório contém os arquivos Jupyter Notebook usados no projeto. Esses arquivos incluem a manipulação de dados e do modelo de classificação utilizados no projeto.
+- readme-assets: Este armazena as imagens utilizadas nos READMEs do repositório.
 - trainings: Esse diretório é utilizado para armazenar os modelos de Machine Learning e suas respectivas configurações, para que possam ser utilizados em outras aplicações ou comparados com outros modelos. Como esses modelos ocupam bastante memória, o [README](https://github.com/Tuiaia/artificial-intelligence/blob/main/trainings/README.md) contido nesse diretório contém o endereço do nosso projeto no Hugging Face, que é usada especificamente para o armazenamento de modelos e conjuntos de dados de Machine Learning.
 
 ```text
@@ -31,6 +32,7 @@ artificial-intelligence
 |  └── infomoney
 ├── jupyter-notebooks
 |  └── dataset-notebook
+├── readme-assets
 └── trainings
 |  ├── ...
 ```
