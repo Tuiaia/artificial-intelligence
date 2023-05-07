@@ -1,6 +1,11 @@
 name: Jupyter Notebook Static Analysis with nbQA
 
 on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - '**.ipynb'
   pull_request:
     paths:
       - '**.ipynb'
@@ -50,4 +55,20 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `The static analysis report with nbQA has been generated. Please review it and make the necessary changes:\n\`\`\`\n${report}\n\`\`\``
+            });
+
+      - name: Create issue for improvements if there is a nbQA report
+        if: steps.check_report.outputs.has_report == 'true' && github.event_name == 'push'
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('./nbqa-report.txt', 'utf8');
+            const push_author = context.actor;
+            await github.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Improvements needed after Jupyter Notebook static analysis with nbQA',
+              body: `@${push_author}, the static analysis report with nbQA has detected some areas for improvement. Please review the report and make the necessary changes:\n\`\`\`\n${report}\n\`\`\``
             });
