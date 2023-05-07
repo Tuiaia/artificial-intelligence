@@ -29,15 +29,11 @@ jobs:
           find . -type f -name "*.ipynb" -exec nbqa flake8 {} \;
 
       - name: Create issue with nbQA report
-        uses: peter-evans/create-issue@v3
+        uses: repo-sync/github-tag-action@v2
         with:
-          title: Static Analysis Report with nbQA
-          body: |
-            The following issues were found in the Jupyter Notebooks:
-
-            ```
-            ${{ steps.nbqa_report.outputs.stdout }}
-            ```
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: nbqa-report
+          tag_body_file: ./nbqa-report.txt
 
       - name: Get Pull Request Number
         id: pr_number
