@@ -1,7 +1,7 @@
 name: Jupyter Notebook Static Analysis with nbQA
 
 on:
-  push:
+  pull_request:
     paths:
       - '**.ipynb'
   workflow_dispatch:
@@ -24,29 +24,30 @@ jobs:
           pip install nbQA flake8
 
       - name: Run nbQA with flake8
-        id: nbqa_report
         run: |
-          find . -type f -name "*.ipynb" -exec nbqa flake8 {} \;
+          find . -type f -name "*.ipynb" -exec nbqa flake8 {} \; 2>&1 | tee nbqa-report.txt
 
-      - name: Create issue with nbQA report
-        uses: repo-sync/github-tag-action@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: nbqa-report
-          tag_body_file: ./nbqa-report.txt
+      - name: Check if nbQA report is empty
+        id: check_report
+        run: |
+          if [[ -s nbqa-report.txt ]]; then
+            echo "::set-output name=has_report::true"
+          else
+            echo "::set-output name=has_report::false"
+          fi
 
-      - name: Get Pull Request Number
-        id: pr_number
-        run: echo "::set-output name=pr_number::$(jq --raw-output '.pull_request.number' $GITHUB_EVENT_PATH)"
-
-      - name: Add comment to pull request
+      - name: Add comment to pull request with nbQA report
+        if: steps.check_report.outputs.has_report == 'true' && github.event_name == 'pull_request'
         uses: actions/github-script@v4
-        if: steps.pr_number.outputs.pr_number != 'null'
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.issues.createComment({
-              issue_number: ${{ steps.pr_number.outputs.pr_number }},
-              owner: 'TiagoSanti',  # substitua pelo nome do seu usuário no GitHub
-              repo: 'artificial-intelligence',  # substitua pelo nome do seu repositório
-              body: 'The static analysis report with nbQA has been generated. Please review it and make the necessary changes.'
-            })
+            const fs = require('fs');
+            const report = fs.readFileSync('./nbqa-report.txt', 'utf8');
+            const pr_number = context.payload.pull_request.number;
+            await github.issues.createComment({
+              issue_number: pr_number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `The static analysis report with nbQA has been generated. Please review it and make the necessary changes:\n\`\`\`\n${report}\n\`\`\``
+            });
