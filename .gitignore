@@ -1,3 +1,4 @@
 node_modules/
 wandb/
 trainings/bert-*
+trainings/distilbert-*
