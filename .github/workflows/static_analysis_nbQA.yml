@@ -46,7 +46,7 @@ jobs:
           script: |
             github.issues.createComment({
               issue_number: ${{ steps.pr_number.outputs.pr_number }},
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              owner: 'TiagoSanti',  # substitua pelo nome do seu usuário no GitHub
+              repo: 'artificial-intelligence',  # substitua pelo nome do seu repositório
               body: 'The static analysis report with nbQA has been generated. Please review it and make the necessary changes.'
             })
