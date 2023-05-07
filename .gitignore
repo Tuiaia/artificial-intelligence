@@ -1,3 +1,4 @@
+.tmp.driveupload/
 node_modules/
 wandb/
 trainings/bert-*
