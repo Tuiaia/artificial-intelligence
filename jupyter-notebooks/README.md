@@ -1,12 +1,15 @@
 # Jupyter Notebooks
 
-Neste diretório, você encontrará os Jupyter Notebooks que abordam o desenvolvimento do modelo de classificação e a implementação de técnicas para extrair informações relevantes a partir dos resultados das classificações. Esses notebooks fornecem uma visão detalhada do processo de construção, avaliação e interpretação do modelo, auxiliando na compreensão das decisões tomadas e na identificação de áreas de melhoria ou oportunidades de otimização.
-
 ## Sumário
 
+- [Descrição](#descrição)
 - [Construção do modelo](#construção-do-modelo)
 - [Avaliação do modelo](#avaliação-e-teste-do-modelo)
 - [Extração de insights](#extração-de-insights)
+
+## Descrição
+
+Neste diretório, você encontrará os Jupyter Notebooks que abordam o desenvolvimento do modelo de classificação e a implementação de técnicas para extrair informações relevantes a partir dos resultados das classificações. Esses notebooks fornecem uma visão detalhada do processo de construção, avaliação e interpretação do modelo, auxiliando na compreensão das decisões tomadas e na identificação de áreas de melhoria ou oportunidades de otimização.
 
 ## Construção do modelo
 

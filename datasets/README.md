@@ -1,9 +1,16 @@
-# Análise do dataset
+# Datasets
 
 ## Sumário
 
+- [Descrição](#descrição)
 - [Porcentagem de rótulos por idioma](#porcentagem-de-rótulos-por-idioma)
 - [Nuvens de palavras do dataset](#nuvens-de-palavras-do-dataset)
+
+## Descrição
+
+Neste diretório estão armazenados os datasets completos, parciais e auxiliares utilizados para alimentar o modelo de classificação, os detalhes referentes à coleta e construção estão registrados no [README](../jupyter-notebooks/dataset-notebook/README.md) do diretório dos Jupyter Notebooks.
+
+Este documento apresenta uma análise do dataset construído. Aqui, exploramos a distribuição dos sentimentos nos textos e as palavras mais frequentes em cada idioma e sentimento. Essa análise auxilia na compreensão das características dos dados e na identificação de possíveis diferenças de sentimento entre os idiomas.
 
 ## Porcentagem de rótulos por idioma
 

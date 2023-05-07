@@ -1,4 +1,15 @@
-# Datasets-notebook
+# Jupyter Notebooks - Datasets
+
+## Sumário
+
+- [Descrição](#descrição)
+- [Infomoney](#infomoney)
+- [Financial PhraseBank](#financial-phrasebank)
+- [B3 - Bora Investir](#b3---bora-investir)
+- [Google News](#google-news)
+- [Construção do Dataset Final](#construção-do-dataset-final)
+
+## Descrição
 
 Este diretório contém os Jupyter Notebooks utilizados para manipulação, análise e pré-processamentos dos datasets que alimentam o treinamento, validação e teste do modelo de classificação. Cada fonte de dados possui tratamentos específicos registrados em seu respectivo Jupyter Notebook. Os passos para os processos realizados com cada conjunto estão detalhados abaixo e em código.
 
