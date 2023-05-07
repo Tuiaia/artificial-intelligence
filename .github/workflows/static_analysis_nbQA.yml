@@ -24,5 +24,33 @@ jobs:
           pip install nbQA flake8
 
       - name: Run nbQA with flake8
+        id: nbqa_report
         run: |
           find . -type f -name "*.ipynb" -exec nbqa flake8 {} \;
+
+      - name: Create issue with nbQA report
+        uses: peter-evans/create-issue@v3
+        with:
+          title: Static Analysis Report with nbQA
+          body: |
+            The following issues were found in the Jupyter Notebooks:
+
+            ```
+            ${{ steps.nbqa_report.outputs.stdout }}
+            ```
+
+      - name: Get Pull Request Number
+        id: pr_number
+        run: echo "::set-output name=pr_number::$(jq --raw-output '.pull_request.number' $GITHUB_EVENT_PATH)"
+
+      - name: Add comment to pull request
+        uses: actions/github-script@v4
+        if: steps.pr_number.outputs.pr_number != 'null'
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: ${{ steps.pr_number.outputs.pr_number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'The static analysis report with nbQA has been generated. Please review it and make the necessary changes.'
+            })
