@@ -71,4 +71,6 @@ jobs:
               repo: context.repo.repo,
               title: 'Improvements needed after Jupyter Notebook static analysis with nbQA',
               body: `@${push_author}, the static analysis report with nbQA has detected some areas for improvement. Please review the report and make the necessary changes:\n\`\`\`\n${report}\n\`\`\``
+              assignees: [push_author],
+              labels: ['enhancement']
             });
